@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --yellow-primary: #FFE000;
+  --yellow-secondary: #FFC700;
+  --yellow-accent: #FFA800;
+  --black-primary: #0a0a0a;
+  --black-secondary: #111111;
+  --black-light: #1a1a1a;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--black-primary);
+  color: #ffffff;
+  overflow-x: hidden;
+  letter-spacing: 0.5px;
+}
+
+.heading-font {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Yatay kaydırma animasyonları */
+@keyframes scrollX {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollXReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-x {
+  animation: scrollX 30s linear infinite;
+}
+
+.animate-scroll-x-reverse {
+  animation: scrollXReverse 30s linear infinite;
+}
+
+/* Navigation animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-item-appear {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, var(--yellow-primary), var(--yellow-accent));
+  transition: width 0.3s ease;
+}
+
+.nav-underline:hover::after {
+  width: 100%;
+}
+
+/* Gelişmiş card stil */
+.premium-card {
+  background: linear-gradient(145deg, #0e0e0e, #161616);
+  border: 1px solid rgba(255, 224, 0, 0.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 224, 0, 0.03), transparent);
+  transform: translateY(-100%);
+  transition: transform 0.6s ease;
+  z-index: -1;
+}
+
+.premium-card:hover {
+  transform: translateY(-5px);
+  border: 1px solid rgba(255, 224, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 224, 0, 0.1);
+}
+
+.premium-card:hover::before {
+  transform: translateY(0);
+}
+
+/* Gelişmiş bölüm stilleri */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 224, 0, 0.1), transparent);
+  margin: 4rem 0;
+}
+
+/* Parlama efekti */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 30px rgba(255, 224, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-effect:hover::after {
+  opacity: 1;
+}
+
+/* Vurgu animasyonu */
+@keyframes accentPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.accent-pulse {
+  animation: accentPulse 3s ease-in-out infinite;
+}
+
+/* Original styles */
+.bg-spark {
+  background: radial-gradient(ellipse at center, rgba(255, 224, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  animation: sparkPulse 4s ease-in-out infinite;
+}
+
+@keyframes sparkPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+.neural-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 224, 0, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 224, 0, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: neuralMove 20s linear infinite;
+}
+
+@keyframes neuralMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+.circuit-lines {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, rgba(255, 224, 0, 0.05) 1px, transparent 1px),
+                    linear-gradient(0deg, rgba(255, 224, 0, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black, transparent);
+  animation: circuitFlow 15s linear infinite;
+}
+
+.features-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 224, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 224, 0, 0.03) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(100px, 100px); }
+}
+
+.work-particles {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 224, 0, 0.3);
+  border-radius: 50%;
+  animation: particleFloat 8s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+
+.contact-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 224, 0, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.5); opacity: 0.1; }
+}
+@keyframes circuitFlow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50px); }
+}
+
+.data-stream {
+  position: absolute;
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 224, 0, 0.5), transparent);
+  animation: dataFlow 3s linear infinite;
+}
+
+@keyframes dataFlow {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #FFE000, #FFA500, #FFD700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 25px rgba(255, 224, 0, 0.3);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 224, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 224, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 224, 0, 0);
+  }
+}
+
+.plug-animation {
+  animation: plugIn 1.5s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes plugIn {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #FFE000, #FFA500, #FFD700);
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.neon-border:hover::before {
+  opacity: 1;
+}
+
+/* Glass effect for modern UI */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 224, 0, 0.1);
+}
